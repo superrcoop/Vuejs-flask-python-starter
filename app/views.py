@@ -1,11 +1,17 @@
-import os
+"""
+Flask Documentation:     http://flask.pocoo.org/docs/
+Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
+Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
+"""
+
 from app import app
 from flask import render_template
 
-@app.route("/")
+@app.route('/')
 def index():
-    error = None
-    return render_template('index.html',error=error)
+    """Render website's initial page and let VueJS take over."""
+    return render_template('index.html')
+
 
 @app.route('/<file_name>.txt')
 def send_text_file(file_name):
