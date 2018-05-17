@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %} <title>Vuejs-starter</title>{% endblock%}
+{% block main %}
+<div id="app">
+	 {% with messages = get_flashed_messages()
+ 		%}
+   		{% if messages %}
+     <ul class="flashes">
+     {% for message in messages %}
+       <li>{{ message }}</li>
+     {% endfor %}
+     </ul>
+   {% endif %}
+ 		{% endwith %}
+    <app-header></app-header>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>ABC Recipe</title>
-</head>
-<body>
-  <h1>ABCRecipe.xyz</h1>
-</body>
+    <main>
+        <div class="container">
+            <!-- component matched by the route will render here -->
+            <router-view></router-view>
+        </div>
+    </main>
 
-</html>
+    <app-footer></app-footer>
+</div>
+{% endblock %}
